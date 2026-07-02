@@ -11,7 +11,7 @@ spring:
 
 stripe:
   api:
-    secret: sk_test_51SltUYSqKZyfqYXUPuOa2khQFmQjLNV0poXK9DQ87ZDh2DNoqSfSpHW51coHInsFgcAdziLMbKwij5AL5SOY4IZH00UC0JYE9m
+    secret: sk_test_51S4lmw9ddI7TTPGG5gfHOIOTUvMhRk9s1Fd3zvYq8UNfvwPKZEyKnjI8o026uAeTFmjT3p3n7lucdZ1JKO9iCdiW008ajVypEZ
   webhook:
     secret: whsec_1f2beb298b67fc1da93c54082fce1b10a7ecd7f2e09674f3b7e14f646393f1bc
 
