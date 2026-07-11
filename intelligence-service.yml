@@ -13,10 +13,10 @@ spring:
     model.chat: openai
     openai:
       api-key: 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
-      base-url: google/gemini-2.5-flash
+      base-url: https://openrouter.ai/api
       chat:
         options:
-          model: openrouter/free
+          model: google/gemini-2.5-flash
           temperature: 0.2
       embedding:
         options:
