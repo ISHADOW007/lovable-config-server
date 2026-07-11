@@ -1,6 +1,7 @@
 server:
   port: 9030
-  servlet.context-path: /intelligence
+  servlet:
+    context-path: /intelligence
 
 spring:
   datasource:
@@ -9,29 +10,18 @@ spring:
     password: satyam
     driver-class-name: org.postgresql.Driver
 
- ai:
+  ai:
     model:
-      chat: gemini
+      chat: google-genai
 
-    gemini:
-      api-key: AQ.Ab8RN6I1yt_R_bkI_rHuFgyIHkkffdH7VRbAJH5QvlOgRBY2dA
+    google:
+      genai:
+        api-key: ${GEMINI_API_KEY}
 
-      chat:
-        options:
-          model: gemini-2.5-flash
-          temperature: 0.2
-  # ai:
-  #   model.chat: openai
-  #   openai:
-  #     api-key: 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
-  #     base-url: https://openrouter.ai/api
-  #     chat:
-  #       options:
-  #         model: google/gemini-2.5-flash
-  #         temperature: 0.2
-  #     embedding:
-  #       options:
-  #         model: qwen/qwen3-embedding-8b
+        chat:
+          options:
+            model: gemini-2.5-flash
+            temperature: 0.2
 
 ---
 
@@ -39,14 +29,21 @@ spring:
   config:
     activate:
       on-profile: k8s
+
   datasource:
     url: jdbc:postgresql://pgvector.lovable-core.svc.cluster.local:5432/intelligence_db
     username: intelligence_user
     password: ${DB_PASSWORD}
 
-ai:
-    openai:
-      api-key: ${AI_API_KEY}
-    chat:
-        options:
-          model: google/gemini-3-flash-preview
+  ai:
+    model:
+      chat: google-genai
+
+    google:
+      genai:
+        api-key: ${GEMINI_API_KEY}
+
+        chat:
+          options:
+            model: gemini-2.5-flash
+            temperature: 0.2
