@@ -14,7 +14,7 @@ spring:
       chat: gemini
 
     gemini:
-      api-key: ${GEMINI_API_KEY}
+      api-key: AQ.Ab8RN6I1yt_R_bkI_rHuFgyIHkkffdH7VRbAJH5QvlOgRBY2dA
 
       chat:
         options:
