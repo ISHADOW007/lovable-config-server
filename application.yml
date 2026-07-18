@@ -47,10 +47,20 @@ management:
   endpoints:
     web:
       exposure:
-        include: health,info
-  health:
-    config:
-      enabled: false
+        include: "*"
+
+  endpoint:
+    health:
+      show-details: always
+
+  metrics:
+    tags:
+      application: ${spring.application.name}
+
+  prometheus:
+    metrics:
+      export:
+        enabled: true
 
 logging:
   level:
@@ -88,3 +98,13 @@ app:
 ACCOUNT_SERVICE_URI: http://account-service
 WORKSPACE_SERVICE_URI: http://workspace-service
 INTELLIGENCE_SERVICE_URI: http://intelligence-service
+
+
+
+
+
+# /actuator/health
+# /actuator/info
+# /actuator/prometheus
+# /actuator/metrics
+# all other actuator endpoints
