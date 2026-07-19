@@ -10,19 +10,41 @@ app:
       - "/api/v1/account/webhooks/**"
       - "/api/v1/workspace/public/**"
 
+
 spring:
   cloud:
     gateway.server.webflux:
+
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedOrigins:
+              - "http://localhost:3000"
+              - "http://localhost:5173"
+            allowedMethods:
+              - GET
+              - POST
+              - PUT
+              - PATCH
+              - DELETE
+              - OPTIONS
+            allowedHeaders:
+              - "*"
+            allowCredentials: true
+
+        add-to-simple-url-handler-mapping: true
+
+
       routes:
-        # Account Service (context-path: /account)
+
         - id: account-service
           uri: ${ACCOUNT_SERVICE_URI:lb://account-service}
           predicates:
             - Path=/api/v1/account/**
           filters:
             - StripPrefix=2
-            
-         # Workspace Service (context-path: /workspace)
+
+
         - id: workspace-service
           uri: ${WORKSPACE_SERVICE_URI:lb://workspace-service}
           predicates:
@@ -30,7 +52,7 @@ spring:
           filters:
             - StripPrefix=2
 
-        # Intelligence Service  (context-path: /intelligence)
+
         - id: intelligence-service
           uri: ${INTELLIGENCE_SERVICE_URI:lb://intelligence-service}
           predicates:
